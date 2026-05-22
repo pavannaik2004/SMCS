@@ -44,7 +44,7 @@ Flutter App (scms_flutter/)    →  Node.js API (scms_backend/:3000)  →  Pytho
 | **Pavan** | Flutter: Foundation + Core + Data + Widgets + Student Screens | `pavan/core-and-student-flow` | ✅ Phases 1-6 DONE |
 | **Prabhava** | Flutter: Staff + SR + Admin + Settings + Notifications | `prabhava/staff-sr-admin` | 🟢 **CAN START NOW** |
 | **Prem** | Node.js backend: All routes, auth, SLA, FCM | `prem/nodejs-backend` | 🟢 **CAN START NOW** |
-| **Pramath** | Python AI: FastAPI, Gemini, embeddings, duplicate detection | `pramath/ai-service` | 🟢 **CAN START NOW** |
+| **Pramath** | Python AI: FastAPI, Gemini, embeddings, duplicate detection | `pramath/ai-service` | ✅ All 4 endpoints DONE |
 
 ---
 
@@ -217,32 +217,37 @@ server.js → src/app.js → src/middleware/authenticate.js
 ```
 
 ### Pramath — Python AI Service
-**Status: 🟢 READY TO START**
+**Status: ✅ COMPLETE** | Date: 2026-05-19
 
-All placeholder files exist in `scms_ai_service/`.
+| File | Status | Notes |
+|---|---|---|
+| `requirements.txt` | ✅ | google-genai, fastapi, uvicorn, psycopg2-binary, pgvector, pydantic, numpy, httpx |
+| `.env` | ✅ | Copy `.env.example`, set real `GEMINI_API_KEY` from AI Studio |
+| `models/schemas.py` | ✅ | All Pydantic schemas: Grammar, Categorize, Embed, Duplicate |
+| `services/gemini_client.py` | ✅ | New `google-genai` SDK; grammar + categorize + embed, all with try/except fallbacks |
+| `services/db_client.py` | ✅ | psycopg2 pool + pgvector; store_embedding + find_similar_complaints |
+| `routers/grammar.py` | ✅ | POST /grammar-check with word-level EQUAL/DELETE/INSERT diffs |
+| `routers/categorize.py` | ✅ | POST /categorize; maps AI output to category/dept IDs |
+| `routers/embed.py` | ✅ | POST /embed; generates + stores 768-d vector in complaints.embedding |
+| `routers/duplicate.py` | ✅ | POST /check-duplicate; cosine similarity >= SIMILARITY_THRESHOLD |
+| `main.py` | ✅ | CORS, all routers, /health probe, startup pgvector migration |
 
-**Start immediately with:**
-1. `cd scms_ai_service && python -m venv venv && venv\Scripts\activate`
-2. Copy `.env.example` → `.env`, add real `GEMINI_API_KEY`
-3. Implement `requirements.txt` first (fastapi, uvicorn, google-generativeai, psycopg2-binary, python-dotenv)
-4. Implement in order: `models/schemas.py` → `services/gemini_client.py` → each router
+**Notes for Prem (Node.js):**
+- Service runs on port 8000 (configurable via PORT env var)
+- All endpoints return safe defaults on failure — never crash with 500
+- `/embed` must be called by Node.js AFTER saving complaint to DB (`complaintId` required)
+- Category/dept IDs in `/categorize` are placeholder slugs — update once Prem seeds DB UUIDs
+- Gemini: `gemini-2.0-flash` (text), `models/gemini-embedding-004` (768-d)
 
-**Priority endpoint order (Prem needs these to proxy):**
-```
-POST /grammar-check  → routers/grammar.py
-POST /categorize     → routers/categorize.py
-POST /embed          → routers/embed.py
-POST /check-duplicate → routers/duplicate.py
-```
-
-**Test each with curl before Prem integrates:**
+**To start:**
 ```bash
-curl -X POST http://localhost:8000/grammar-check \
-  -H "Content-Type: application/json" \
-  -d '{"text": "the pipe is brokeN in hostel block"}'
+cd scms_ai_service && venv\Scripts\activate
+# Set real GEMINI_API_KEY in .env
+uvicorn main:app --reload --port 8000
 ```
 
 ---
+
 
 ## ⚠️ Known Issues & Decisions
 
@@ -341,4 +346,4 @@ uvicorn main:app --reload --port 8000
 
 ---
 
-*Last updated: 2026-05-19T18:44:00+05:30 by Pavan (AI agent) — Phases 1-4 complete, flutter analyze clean*
+*Last updated: 2026-05-19T23:00:00+05:30 by Pramath (AI agent) — Python AI service complete: all 4 endpoints implemented (grammar-check, categorize, embed, check-duplicate)*
