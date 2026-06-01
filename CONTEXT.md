@@ -178,14 +178,37 @@ Flutter App (scms_flutter/)    →  Node.js API (scms_backend/:3000)  →  Pytho
 ---
 
 ### Prabhava — Staff/SR/Admin/Settings/Notifications
-**Status: 🟢 READY TO START**
+**Status: 🟡 IN PROGRESS**
 
-Prabhava's placeholder files already exist. She must:
-1. `git pull main` (Pavan merges Phase 1-4)
-2. `git checkout -b prabhava/staff-sr-admin`
-3. Read `PROMPT_PRABHAVA.md` for her full spec
-4. Start from `lib/presentation/bloc/sr_review/`
-5. Register her BLoCs in `main.dart` by adding a PR request to Pavan
+Completed (2026-06-01):
+- `lib/data/datasources/remote/sr_review_remote_datasource.dart`
+- `lib/data/repositories/sr_review_repository.dart`
+- `lib/domain/usecases/sr_approve_complaint_usecase.dart`
+- `lib/domain/usecases/sr_reject_complaint_usecase.dart`
+- `lib/domain/usecases/update_complaint_status_usecase.dart`
+- `lib/presentation/bloc/sr_review/sr_review_bloc.dart`
+- `lib/presentation/bloc/sr_review/sr_review_event.dart`
+- `lib/presentation/bloc/sr_review/sr_review_state.dart`
+- `lib/presentation/bloc/analytics/analytics_cubit.dart`
+- `lib/presentation/bloc/analytics/analytics_state.dart`
+- `lib/presentation/widgets/analytics/stats_card.dart`
+- `lib/presentation/widgets/analytics/complaints_chart.dart`
+- `lib/services/notification_service.dart`
+- `lib/services/analytics_service.dart`
+- `lib/presentation/pages/sr/sr_dashboard_page.dart`
+- `lib/presentation/pages/sr/sr_review_detail_page.dart`
+- `lib/presentation/pages/staff/staff_dashboard_page.dart`
+- `lib/presentation/pages/staff/staff_complaint_detail_page.dart`
+- `lib/presentation/pages/admin/admin_dashboard_page.dart`
+- `lib/presentation/pages/admin/admin_complaints_list_page.dart`
+- `lib/presentation/pages/settings/settings_page.dart`
+- `lib/presentation/pages/route_helpers.dart`
+
+Next:
+1. Add PR request to Pavan to register `SrReviewBloc` + `AnalyticsCubit` in `main.dart`
+2. Add PR request to Pavan to wire `prabhavaRoutes` into `app.dart`
+3. Add PR request to Pavan to initialize Firebase + NotificationService in `main.dart`
+4. Add widget tests: `test/widget/sr_dashboard_test.dart`, `test/widget/staff_dashboard_test.dart`
 
 **Key pages to implement:**
 - `lib/presentation/pages/sr/sr_dashboard_page.dart`
@@ -346,4 +369,4 @@ uvicorn main:app --reload --port 8000
 
 ---
 
-*Last updated: 2026-05-19T23:00:00+05:30 by Pramath (AI agent) — Python AI service complete: all 4 endpoints implemented (grammar-check, categorize, embed, check-duplicate)*
+*Last updated: 2026-06-01T12:05:00+05:30 by Prabhava (AI agent) — staff/SR/admin/settings screens, analytics widgets, notification + analytics services, route helpers implemented*
