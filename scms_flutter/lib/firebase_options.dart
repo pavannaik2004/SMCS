@@ -1,48 +1,40 @@
-// GENERATED FILE — DO NOT EDIT MANUALLY.
-//
-// Run the following command to replace this file with real Firebase config:
-//
-//   dart pub global activate flutterfire_cli
-//   flutterfire configure --project=<your-firebase-project-id>
-//
-// Until then the app will throw at Firebase.initializeApp() on launch.
+// File generated from google-services.json (scms-campus-app).
+// Re-generate by running: flutterfire configure --project=scms-campus-app
+// or update values manually if firebase project settings change.
 
+// ignore_for_file: type=lint
 import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
-    show defaultTargetPlatform, TargetPlatform;
+    show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
+    if (kIsWeb) {
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web. '
+        'Run flutterfire configure to add web support.',
+      );
+    }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for iOS. '
+          'Run flutterfire configure to add iOS support.',
+        );
       default:
         throw UnsupportedError(
-          'DefaultFirebaseOptions are not configured for this platform. '
-          'Run `flutterfire configure` to generate real values.',
+          'DefaultFirebaseOptions are not supported for this platform.',
         );
     }
   }
 
-  // ── Replace all values below by running `flutterfire configure` ──────────
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_REAL_VALUE',
-    appId: 'REPLACE_WITH_REAL_VALUE',
-    messagingSenderId: 'REPLACE_WITH_REAL_VALUE',
-    projectId: 'REPLACE_WITH_REAL_VALUE',
-    storageBucket: 'REPLACE_WITH_REAL_VALUE',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'REPLACE_WITH_REAL_VALUE',
-    appId: 'REPLACE_WITH_REAL_VALUE',
-    messagingSenderId: 'REPLACE_WITH_REAL_VALUE',
-    projectId: 'REPLACE_WITH_REAL_VALUE',
-    storageBucket: 'REPLACE_WITH_REAL_VALUE',
-    iosClientId: 'REPLACE_WITH_REAL_VALUE',
-    iosBundleId: 'REPLACE_WITH_REAL_VALUE',
+    apiKey: 'AIzaSyDf1H5JHbPKW5KzW76aoIvxoMi1KKGsrRQ',
+    appId: '1:182336575222:android:845f4814f4cde1f3a7fed7',
+    messagingSenderId: '182336575222',
+    projectId: 'scms-campus-app',
+    storageBucket: 'scms-campus-app.firebasestorage.app',
   );
 }

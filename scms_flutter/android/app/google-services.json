@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "182336575222",
+    "project_id": "scms-campus-app",
+    "storage_bucket": "scms-campus-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182336575222:android:845f4814f4cde1f3a7fed7",
+        "android_client_info": {
+          "package_name": "com.scms.scms_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf1H5JHbPKW5KzW76aoIvxoMi1KKGsrRQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
